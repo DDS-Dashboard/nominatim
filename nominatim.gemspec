@@ -15,12 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Nominatim::VERSION
 
-  gem.add_dependency 'faraday'
   gem.add_dependency 'multi_json'
-
-  gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rspec', '~> 2.10'
+  gem.add_dependency 'http'
+  gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'webmock'
-  gem.add_development_dependency 'simplecov'
-  gem.add_development_dependency 'yard'
 end
