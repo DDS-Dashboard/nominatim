@@ -1,13 +1,13 @@
-require "nominatim/version"
-require "nominatim/configuration"
-require "nominatim/point"
-require "nominatim/polygon"
-require "nominatim/address"
-require "nominatim/place"
-require "nominatim/response/parse_json"
-require "nominatim/client"
-require "nominatim/search"
-require "nominatim/reverse"
+require 'multi_json'
+require_relative "./nominatim/version"
+require_relative "./nominatim/configuration"
+require_relative "./nominatim/point"
+require_relative "./nominatim/polygon"
+require_relative "./nominatim/address"
+require_relative "./nominatim/place"
+require_relative "./nominatim/client"
+require_relative "./nominatim/search"
+require_relative "./nominatim/reverse"
 
 module Nominatim
 

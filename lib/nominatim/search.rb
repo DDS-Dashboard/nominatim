@@ -10,7 +10,7 @@ module Nominatim
     # Iterates over the search results.
     def each(&block)
       @criteria.delete(:q) if (@criteria.keys & [:street, :city, :county, :state, :country, :postalcode]).count > 0
-      @results ||= get(Nominatim.config.search_url, @criteria).body.map! { |attrs| Nominatim::Place.new(attrs) }
+      @results ||= get(Nominatim.config.search_url, @criteria).map! { |attrs| Nominatim::Place.new(attrs) }
       @results.each(&block)
     end
 
@@ -26,11 +26,15 @@ module Nominatim
     # Structured street search request
     #
     # @see https://wiki.openstreetmap.org/wiki/Nominatim
-    def street housenumber, streetname
+    def street(housenumber, streetname)
       @criteria[:street] = "#{housenumber} #{streetname}"
       self
     end
 
+    def street_full(street)
+      @criteria[:street] = street
+      self
+    end
     # Query string to search for.
     #
     # @param q [String] Query string
@@ -112,6 +116,5 @@ module Nominatim
       @criteria[:limit] = limit
       self
     end
-
   end
 end

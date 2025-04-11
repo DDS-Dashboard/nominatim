@@ -12,7 +12,6 @@ require 'webmock/rspec'
 WebMock.disable_net_connect!
 
 RSpec.configure do |config|
-  config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
 
@@ -26,7 +25,7 @@ def a_get(path)
 end
 
 def stub_get(path)
-  stub_request(:get, "#{Nominatim.config.endpoint}#{path}").with(query: { format: 'json' })
+  stub_request(:get, "#{URI.join(Nominatim.config.endpoint, path)}").with(query: { format: 'json' })
 end
 
 def fixture_path
